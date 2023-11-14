@@ -1,0 +1,51 @@
+{% load static %}
+
+<h2>Live Metric Data</h2>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<canvas id="bitcoinChart" width="400" height="400"></canvas>
+
+<script>
+    const ctx = document.getElementById("bitcoinChart").getContext('2d');
+    let bitcoinChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels:[],
+            datasets: [{
+                label: 'Bitcoin Price (USD)',
+                data: [],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+//  Chart update function
+    function updateBitcoinChart(price, time) {
+        botcoinChart.data.labels.push(time);
+        bitcoinChart.data.datasets.forEach((dataset) => {
+            dataset,data.push(price);
+        });
+        bitcoinChart.update();
+    }
+// Bitcoin Price & update chart
+    function fetchBitcoinPrice() {
+        fetch('bitcoin-price/')
+            .then(response => response.json())
+            .then(data => {
+                const price = data.price;
+                const time = new Date().toLocaleTimeString();
+                updateBitcoinChart(price, time);
+            });
+
+    }
+//INTERVAL SET TIME = 1 MINUTE
+    setInterval(fetchBitcoinPrice, 60000)
+</script>
