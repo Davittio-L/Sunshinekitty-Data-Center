@@ -1,44 +1,24 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-.wrapper {
-    position: relative;
-    background-image: url('../images/banner.jpg');
-    background-size: cover;
-    height: 100vh;
-    color: white;
-}
-
-.title {
-    position: relative;
-    top: 50%;
+.banner {
+    position: absolute;
     left: 50%;
-    transform: translate(-50%, -50%);
 }
 
-
-nav.navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-}
-
-ul.menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav a {
+    text-decoration: none; /* Removes the default hyperlink underline */
+    color: black; /* Sets the text color */
+    font-size: 20px; /* Sets the font size */
+    padding: 5px 10px; /* Adds padding inside the rounded box */
+    border-radius: 10px; /* Gives a rounded shape to the box */
+    background-color: lightgrey; /* Sets the background color of the box */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  nav a:hover {
+    background-color: grey; /* Changes background color on hover */
+  }
+  

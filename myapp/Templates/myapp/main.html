@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +12,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Sunshinekitty's Data Corner</h2>
-        <div class="container">
-            <div class="row">
-                <nav class=""navigation>
-                    <ul class="menu">
-                        <li class="list-item"><a href="" class="nal-link">About</a></li>
-                        <li class="list-item"><a href="{% url 'live_metrics' %}" class="nal-link">Live Metrics</a></li>
-                    </ul>
-                    <a href="" class="login-btn">Login</a>
-                </nav>
-            </div>
-        </div>
-    </div>
+
+ <div class="banner">
+    <h2>Sunshinekitty's Data Corner</h2>
+
+ </div>
+
+<nav>
+    <ul>
+        <li><a href="{% static 'live_metrics/' %}">Live Metrics</a></li>
+        <!-- <li></li> -->
+    </ul>
+</nav>
 
 </body>
 </html>
