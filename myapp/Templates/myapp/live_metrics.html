@@ -1,51 +1,29 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2>Live Metric Data</h2>
-<a href="main.html"><p>Go Back</p></a>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<canvas id="bitcoinChart" width="400" height="400"></canvas>
+    <link rel="stylesheet" href="{% static 'css/live_metrics.css' %}">
 
-<script>
-    const ctx = document.getElementById("bitcoinChart").getContext('2d');
-    let bitcoinChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels:[],
-            datasets: [{
-                label: 'Bitcoin Price (USD)',
-                data: [],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: false
-                }
-            }
-        }
-    });
-//  Chart update function
-    function updateBitcoinChart(price, time) {
-        botcoinChart.data.labels.push(time);
-        bitcoinChart.data.datasets.forEach((dataset) => {
-            dataset,data.push(price);
-        });
-        bitcoinChart.update();
-    }
-// Bitcoin Price & update chart
-    function fetchBitcoinPrice() {
-        fetch('bitcoin-price/')
-            .then(response => response.json())
-            .then(data => {
-                const price = data.price;
-                const time = new Date().toLocaleTimeString();
-                updateBitcoinChart(price, time);
-            });
+    <title>Bitcoin Live</title>
+</head>
+<body>
+    
+    <div class="div1">
+        <h2>Live Bitcoin Data</h2>
+    </div>
 
-    }
-//INTERVAL SET TIME = 1 MINUTE
-    setInterval(fetchBitcoinPrice, 60000)
-</script>
+    <div class="div2">
+        <a href="{% url 'main' %}"><p>Go Back</p></a>
+    </div>
+
+    <div class="chart-container">
+    <canvas id="bitcoinChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'mainjs/bitcoinChart.js' %}"></script>
+</body>
+</html>
