@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .utils import get_bitcoin_price
 from django.http import JsonResponse
+from .forms import ExpenseForm
+from .models import Expense
 
 # Create your views here.
 def main(request):
@@ -12,3 +14,14 @@ def bitcoin_price_view(request):
 
 def live_metrics(request):
     return render(request, 'myapp/live_metrics.html')
+
+def index(request):
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            form = ExpenseForm()
+        expenses = Expense.objects.all()
+        return render(request, 'main.html', {'form': form, 'expenses': expenses})
