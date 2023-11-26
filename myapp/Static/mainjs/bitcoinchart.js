@@ -35,11 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('bitcoin-price/')
             .then(response => response.json())
             .then(data => {
+                console.log("Bitcoin price data:", data);  // Log the data
                 const price = data.price;
                 const time = new Date().toLocaleTimeString();
                 updateBitcoinChart(price, time);
-            });
+            })
+            .catch(error => console.error('Error fetching Bitcoin price:', error));
     }
-
     setInterval(fetchBitcoinPrice, 60000);
 });
