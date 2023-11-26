@@ -21,7 +21,7 @@ def index(request):
         if form.is_valid():
             form.save()
             return redirect('index')
-        else:
-            form = ExpenseForm()
-        expenses = Expense.objects.all()
-        return render(request, 'main.html', {'form': form, 'expenses': expenses})
+    else:
+        form = ExpenseForm()
+    expenses = Expense.objects.all()
+    return render(request, 'main.html', {'form': form, 'expenses': expenses})
