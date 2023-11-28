@@ -24,5 +24,27 @@
     </ul>
 </nav>
 
+<div class='inputConverter'>
+    <input type="number" id="usdInput" placeholder="Enter USD amount">
+</div>
+
+<div class="buttonTrigger">
+    <button onclick="convertUsdToBtc()">Convert</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+function convertUsdToBtc() {
+    var usdAmount = document.getElementById('usdInput').value;
+    fetch(`/convert-usd-to-btc/?usd_price=${usdAmount}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result').innerText = 
+                `USD: ${data.usd_price} / BTC: ${data.bitcoin_price}`;
+        })
+        .catch(error => console.error('Error:', error));
+}
+</script>
 </body>
 </html>
