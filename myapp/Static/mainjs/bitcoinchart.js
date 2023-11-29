@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('bitcoin-price/')
             .then(response => response.json())
             .then(data => {
-                console.log("Bitcoin price data:", data);  // Log the data
+                console.log("Bitcoin price data:", data);
                 const price = data.price;
                 const time = new Date().toLocaleTimeString();
                 updateBitcoinChart(price, time);
