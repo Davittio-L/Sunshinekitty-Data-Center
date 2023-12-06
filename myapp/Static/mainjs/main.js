@@ -3,8 +3,9 @@ function convertUsdToBtc() {
     fetch(`/convert-usd-to-btc/?usd_price=${usdAmount}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('result').innerText = 
-                `USD: ${data.usd_price} / BTC: ${data.bitcoin_price}`;
+            const formattedUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.usd_price);
+            const formattedBtc = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 8 }).format(data.bitcoin_price);
+            document.getElementById('result').innerText = `USD: ${formattedUsd} / BTC: ${formattedBtc}`;
         })
         .catch(error => console.error('Error:', error));
 }
@@ -14,8 +15,9 @@ function convertBtcToUsd() {
     fetch(`/convert-btc-to-usd/?btc_amount=${btcAmount}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('result').innerText = 
-                `BTC: ${data.btc_amount} / USD: ${data.usd_price}`;
+            const formattedBtc = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 8 }).format(data.btc_amount);
+            const formattedUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.usd_price);
+            document.getElementById('result').innerText = `BTC: ${formattedBtc} / USD: ${formattedUsd}`;
         })
         .catch(error => console.error('Error:', error));
 }
