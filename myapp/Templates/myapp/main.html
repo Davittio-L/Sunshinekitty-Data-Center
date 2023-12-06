@@ -24,15 +24,19 @@
     </ul>
 </nav>
 
-<div class='inputConverter'>
-    <input type="number" id="usdInput" placeholder="Enter USD amount">
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <div class='inputConverter'>
+        <input type="number" id="usdInput" placeholder="Enter USD amount">
+    </div>
+
+    <div class="buttonTrigger">
+        <button onclick="convertUsdToBtc()">Convert</button>
+    </div>
 </div>
 
-<div class="buttonTrigger">
-    <button onclick="convertUsdToBtc()">Convert</button>
+<div class="d-flex justify-content-center">
+    <div id="result"></div>
 </div>
-
-<div id="result"></div>
 
 <script>
 function convertUsdToBtc() {
