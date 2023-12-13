@@ -48,10 +48,26 @@
 <div class="d-flex justify-content-center">
     <div id="result"></div>
 </div>
+
 <!-- ExpenseForm -->
 <form method="post">
     {% csrf_token %}
-    {% form.as_p %}
+    <div>
+        <label for="id_up_front_cost">Up Front Cost:</label>
+        {{ form.up_front_cost }}
+    </div>
+    <div>
+        <label for="id_daily_cost">Daily Cost:</label>
+        {{ form.daily_cost }}
+    </div>
+    <div>
+        <label for="id_daily_income">Daily Income:</label>
+        {{ form.daily_income }}
+    </div>
+    <div>
+        <label for="id_installation_date">Installation Date:</label>
+        {{ form.installation_date }}
+    </div>
     <button type="submit">Submit</button>
 </form>
 
