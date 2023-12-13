@@ -48,6 +48,12 @@
 <div class="d-flex justify-content-center">
     <div id="result"></div>
 </div>
+<!-- ExpenseForm -->
+<form method="post">
+    {% csrf_token %}
+    {% form.as_p %}
+    <button type="submit">Submit</button>
+</form>
 
 <script src="{% static 'mainjs/main.js' %}"></script>
 </body>
