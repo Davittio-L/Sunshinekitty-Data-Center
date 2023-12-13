@@ -21,3 +21,31 @@ function convertBtcToUsd() {
         })
         .catch(error => console.error('Error:', error));
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('expense-form'); // Ensure your form has this ID
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const upFrontCost = form.querySelector('[name="up_front_cost"]').value;
+        const dailyCost = form.querySelector('[name="daily_cost"]').value;
+        const dailyIncome = form.querySelector('[name="daily_income"]').value;
+        const installationDate = form.querySelector('[name="installation_date"]').value;
+
+        // Create an object to store
+        const expenseData = {
+            upFrontCost,
+            dailyCost,
+            dailyIncome,
+            installationDate
+        };
+
+        // Store the data in local storage
+        localStorage.setItem('expenseData', JSON.stringify(expenseData));
+
+        // Optionally, clear the form or provide feedback
+        form.reset();
+        // You can also add feedback to the user here
+    });
+});

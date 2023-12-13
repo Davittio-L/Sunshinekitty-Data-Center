@@ -27,6 +27,7 @@ def index(request):
     expenses = Expense.objects.all()
     return render(request, 'main.html', {'form': form, 'expenses': expenses})
 
+
 def get_bitcoin_to_usd_rate():
     url = "https://bitpay.com/api/rates"
     response = requests.get(url)
